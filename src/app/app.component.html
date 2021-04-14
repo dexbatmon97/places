@@ -174,13 +174,31 @@
 
 <div class="content" role="main">
   
-  <mat-form-field class="example-full-width">
-    <mat-label>endereco</mat-label>
-    <input id="autocomplete" matInput placeholder="rua..." value="rua jo">
+  <mat-form-field  class="example-full-width">
+    <mat-label>latitude</mat-label>
+    <input   #nameInput type="text"  matInput placeholder="lat" value="-2342.432">
   </mat-form-field>
 
-  <button>Procurar</button>
+  <mat-form-field class="example-full-width">
+    <mat-label>length</mat-label>
+    <input  matInput placeholder="len." value="1123.2232">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>special word</mat-label>
+    <input (keyup)="change($event)"  matInput placeholder="word" value="bomberos">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>radious until 50 000</mat-label>
+    <input  matInput placeholder="radious" value="1000">
+  </mat-form-field>
+
+
+  <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
+  <div *ngIf="condition">{{lat}}</div>
   
+
 </div>
 
 <router-outlet></router-outlet>
