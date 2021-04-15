@@ -160,7 +160,7 @@
 
 </style>
 
-<!-- Toolbar -->
+
 <div class="toolbar" role="banner">
   <img
     width="40"
@@ -176,27 +176,42 @@
   
   <mat-form-field  class="example-full-width">
     <mat-label>latitude</mat-label>
-    <input   #nameInput type="text"  matInput placeholder="lat" value="-2342.432">
+    <input (keyup)="la($event)"  #nameInput type="text"  matInput placeholder="lat" value="ex:-2342.432">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>length</mat-label>
-    <input  matInput placeholder="len." value="1123.2232">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>special word</mat-label>
-    <input (keyup)="change($event)"  matInput placeholder="word" value="bomberos">
+    <input (keyup)="le($event)" matInput placeholder="len." value="ex:1123.2232">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>radious until 50 000</mat-label>
-    <input  matInput placeholder="radious" value="1000">
+    <input (keyup)="ra($event)"  matInput placeholder="word" value="ex:10000">
   </mat-form-field>
 
+  <mat-form-field >
+    <mat-label>services</mat-label>
+      <mat-select  [(value)]="service"  >
+      <mat-option value="airport">airport</mat-option>
+      <mat-option value="bank">bank</mat-option>
+      <mat-option value="convenience_store">convenience_store</mat-option>
+      <mat-option value="electrician">electrician</mat-option>
+      <mat-option value="museum">museum</mat-option>
+      <mat-option value="police">police</mat-option>
+      <mat-option value="fire_station">fire_station</mat-option>
+      <mat-option value="plumber">plumber</mat-option>
+      <mat-option value="school">school</mat-option>
+      <mat-option value="pharmacy">pharmacy</mat-option>
+      <mat-option value="gas_station">gas_station</mat-option>
+      <mat-option value="hospital">hospital</mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
   <div *ngIf="condition">{{lat}}</div>
+  <div *ngIf="condition">{{len}}</div>
+  <div *ngIf="condition">{{ratio}}</div>
+  <div *ngIf="condition">{{service}}</div>
   
 
 </div>
