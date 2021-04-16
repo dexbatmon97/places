@@ -13,13 +13,10 @@ export class AppService {
   //   return this.http.get(""http://localhost:3001/places");
   // }
 
-  getPlacesname() {
-    return this.http.get("http://localhost:3001/placesname");
+  getPlaces() {
+    return this.http.get("http://localhost:3001/places");
   }
 
-  getPlacescode() {
-    return this.http.get("http://localhost:3001/placescode");
-  }
 
   // getAll(){
   //   fetch("http://localhost:3001/places")

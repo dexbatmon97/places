@@ -52,19 +52,13 @@ export class AppComponent implements OnInit {
   search(){
     this.condition=!this.condition
     console.log(this.service);
-    console.log(this.appService.getPlacesname());
-    console.log(this.appService.getPlacescode());
+    console.log(this.appService.getPlaces());
     //console.log(this.appService.getPlaces(this.ratio,this.len,this.lat,this.service));
    // console.log(this.appService.getAll());
 
-   this.appService.getPlacesname()
-   // clone the data object, using its known Config shape
-   .subscribe((data) => { 
-    console.log(data);
-    this.Querys=data;
-    });
+ 
 
-    this.appService.getPlacescode()
+    this.appService.getPlaces()
     // clone the data object, using its known Config shape
     .subscribe((data) => { 
       this.package=data;
@@ -79,6 +73,10 @@ export class AppComponent implements OnInit {
      }
 
      console.log(this.Name)
+     console.log(this.Adress)
+     console.log(this.Number)
+     console.log(this.Url)
+     console.log(this.Website)
      });
 
 
