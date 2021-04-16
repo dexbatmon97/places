@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   Website=[];
   i:any;
   package:any;
+  Package:any;
   
 
   constructor(
@@ -62,21 +63,22 @@ export class AppComponent implements OnInit {
     // clone the data object, using its known Config shape
     .subscribe((data) => { 
       this.package=data;
+      this.Package=data;
       console.log("retrieves");
       for (this.i in data) {
 
-       this.Name[this.i]=this.package[this.i].name
-       this.Adress[this.i]=this.package[this.i].formatted_address
-       this.Number[this.i]=this.package[this.i].international_phone_number
-       this.Url[this.i]=this.package[this.i].url
-       this.Website[this.i]=this.package[this.i].website
+      //  this.Name[this.i]=this.package[this.i].name
+      //  this.Adress[this.i]=this.package[this.i].formatted_address
+      //  this.Number[this.i]=this.package[this.i].international_phone_number
+      //  this.Url[this.i]=this.package[this.i].url
+      //  this.Website[this.i]=this.package[this.i].website
      }
 
-     console.log(this.Name)
-     console.log(this.Adress)
-     console.log(this.Number)
-     console.log(this.Url)
-     console.log(this.Website)
+    //  console.log(this.Name)
+    //  console.log(this.Adress)
+    //  console.log(this.Number)
+    //  console.log(this.Url)
+    //  console.log(this.Website)
      });
 
 
