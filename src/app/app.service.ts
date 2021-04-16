@@ -8,21 +8,17 @@ export class AppService {
   
   constructor(private http: HttpClient) { }
 
-  // getPlaces(r,le,la,s) {
-  //   console.log(r,le,la,s)
-  //   return this.http.get(""http://localhost:3001/places");
-  // }
+  
 
   getPlaces() {
     return this.http.get("http://localhost:3001/places");
   }
 
+  postPlaces(co:String,se:String,ra:String) {
+    return this.http.post("http://localhost:3001/placesinfo",{co,se,ra});
+  }
 
-  // getAll(){
-  //   fetch("http://localhost:3001/places")
-  // .then(response => response.json())
-  // .then(data => console.log(data));
-  // }
-  
+
+ 
 }
 

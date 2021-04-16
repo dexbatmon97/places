@@ -12,6 +12,7 @@ import { FormControl, FormGroup} from '@angular/forms';
 export class AppComponent implements OnInit {
   lat: any;
   len: any;
+  coor: any;
   service: any;
   ratio: any;
   condition=false;
@@ -52,12 +53,13 @@ export class AppComponent implements OnInit {
 
   search(){
     this.condition=!this.condition
+    this.coor=this.la+","+this.le;
     console.log(this.service);
     console.log(this.appService.getPlaces());
     //console.log(this.appService.getPlaces(this.ratio,this.len,this.lat,this.service));
    // console.log(this.appService.getAll());
 
- 
+   this.appService.postPlaces(this.coor,this.service,this.ratio);
 
     this.appService.getPlaces()
     // clone the data object, using its known Config shape
