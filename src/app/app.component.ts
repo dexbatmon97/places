@@ -16,7 +16,14 @@ export class AppComponent implements OnInit {
   ratio: any;
   condition=false;
   title = 'mysolution';
-  profile:any;
+  Querys: any;
+  Adress=[];
+  Number=[];
+  Name = []; 
+  Url=[];
+  Website=[];
+  i:any;
+  package:any;
   
 
   constructor(
@@ -45,15 +52,41 @@ export class AppComponent implements OnInit {
   search(){
     this.condition=!this.condition
     console.log(this.service);
-    console.log(this.appService.getPlaces());
+    console.log(this.appService.getPlacesname());
+    console.log(this.appService.getPlacescode());
     //console.log(this.appService.getPlaces(this.ratio,this.len,this.lat,this.service));
    // console.log(this.appService.getAll());
 
-   this.appService.getPlaces()
+   this.appService.getPlacesname()
    // clone the data object, using its known Config shape
    .subscribe((data) => { 
     console.log(data);
+    this.Querys=data;
     });
+
+    this.appService.getPlacescode()
+    // clone the data object, using its known Config shape
+    .subscribe((data) => { 
+      this.package=data;
+      console.log("retrieves");
+      for (this.i in data) {
+
+       this.Name[this.i]=this.package[this.i].name
+       this.Adress[this.i]=this.package[this.i].formatted_address
+       this.Number[this.i]=this.package[this.i].international_phone_number
+       this.Url[this.i]=this.package[this.i].url
+       this.Website[this.i]=this.package[this.i].website
+     }
+
+     console.log(this.Name)
+     });
+
+
+     
+
+    
+
+
   }
 
 

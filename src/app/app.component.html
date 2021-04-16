@@ -133,7 +133,7 @@
     margin-left: 60px;
   }
 
-
+ 
   a,
   a:visited,
   a:hover {
@@ -157,6 +157,14 @@
     display: flex;
     align-items: center;
   }
+
+  .row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
 
 </style>
 
@@ -212,6 +220,19 @@
   <div *ngIf="condition">{{len}}</div>
   <div *ngIf="condition">{{ratio}}</div>
   <div *ngIf="condition">{{service}}</div>
+
+  <div class="row">
+    <div class="column">
+      <li  *ngFor="let query of Querys" >{{query}} </li>
+    </div>
+
+    <div class="column">
+      <!-- <li  *ngFor="let name of Names">{{name}}</li> -->
+    </div>
+   
+   
+  </div>
+ 
   
 
 </div>
