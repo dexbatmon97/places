@@ -219,6 +219,16 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field >
+    <mat-label>endereco</mat-label>
+      <mat-select  [(value)]="selection"  >
+        <li *ngFor="let autocomplete of Autocomplete">
+          <mat-option  value="autocomplete" >{{autocomplete}} </mat-option>
+        </li>
+      
+    </mat-select>
+  </mat-form-field>
+
   <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
   <div *ngIf="condition">{{lat}}</div>
   <div *ngIf="condition">{{len}}</div>

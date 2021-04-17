@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, getModuleFactory, OnInit } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 import { AppService} from './app.service';
 import { HttpClient } from '@angular/common/http';
@@ -14,19 +14,15 @@ export class AppComponent implements OnInit {
   len: any;
   coor: any;
   service: any;
+  selection:any;
   ratio: any;
   condition=false;
   title = 'mysolution';
   Querys: any;
-  Adress=[];
-  Number=[];
-  Name = []; 
-  Url=[];
-  Website=[];
   i:any;
-  package:any;
-  Package:any;
   
+  Package:any;
+  Autocomplete:any;
 
   constructor(
     private appService: AppService,
@@ -50,6 +46,7 @@ export class AppComponent implements OnInit {
   ra(event : any) {
     this.ratio=event.target.value;
     console.log(this.ratio);}
+  
 
   search(){
     this.condition=!this.condition
@@ -60,27 +57,28 @@ export class AppComponent implements OnInit {
    // console.log(this.appService.getAll());
 
    this.appService.postPlaces(this.coor,this.service,this.ratio);
+    this.appService.getAutocomplete()
+    .subscribe((data) => { 
+     console.log(data);
+         this.Autocomplete=data;
+        //aui se envia al coordenadas
+     });
+
+     this.appService.getCoordinates()
+    .subscribe((data) => { 
+
+      ///de aqui se envia al places 
+      //geometry.location.lat
+      //geometry.location.lng
+     console.log(data);
+     });
 
     this.appService.getPlaces()
     // clone the data object, using its known Config shape
     .subscribe((data) => { 
-      this.package=data;
+      
       this.Package=data;
       console.log("retrieves");
-      for (this.i in data) {
-
-      //  this.Name[this.i]=this.package[this.i].name
-      //  this.Adress[this.i]=this.package[this.i].formatted_address
-      //  this.Number[this.i]=this.package[this.i].international_phone_number
-      //  this.Url[this.i]=this.package[this.i].url
-      //  this.Website[this.i]=this.package[this.i].website
-     }
-
-    //  console.log(this.Name)
-    //  console.log(this.Adress)
-    //  console.log(this.Number)
-    //  console.log(this.Url)
-    //  console.log(this.Website)
      });
 
 

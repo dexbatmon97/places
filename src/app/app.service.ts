@@ -14,6 +14,14 @@ export class AppService {
     return this.http.get("http://localhost:3001/places");
   }
 
+  getAutocomplete() {
+    return this.http.get("http://localhost:3001/autocomplete");
+  }
+
+  getCoordinates() {
+    return this.http.get("http://localhost:3001/coordinates");
+  }
+
   postPlaces(co:String,se:String,ra:String) {
     return this.http.post("http://localhost:3001/placesinfo",{co,se,ra});
   }
