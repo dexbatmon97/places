@@ -10,8 +10,7 @@ import { FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  lat: any;
-  len: any;
+
   coor: any;
   service: any;
   selection:any;
@@ -35,22 +34,18 @@ export class AppComponent implements OnInit {
     console.log("holi");
   }
  
-  le(event : any) {
-    this.len=event.target.value;
-    console.log(this.len);}
-
-  la(event : any) {
-    this.lat=event.target.value;
-    console.log(this.lat);}
-
   ra(event : any) {
     this.ratio=event.target.value;
-    console.log(this.ratio);}
+    console.log(this.ratio);
+  }
+
+  pla(event : any) {
+   }
   
 
   search(){
     this.condition=!this.condition
-    this.coor=this.la+","+this.le;
+    
     console.log(this.service);
     console.log(this.appService.getPlaces());
     //console.log(this.appService.getPlaces(this.ratio,this.len,this.lat,this.service));
@@ -66,8 +61,10 @@ export class AppComponent implements OnInit {
 
      this.appService.getCoordinates()
     .subscribe((data) => { 
-
+     
+       
       ///de aqui se envia al places 
+      //this.co
       //geometry.location.lat
       //geometry.location.lng
      console.log(data);

@@ -185,15 +185,20 @@
 </div>
 
 <div class="content" role="main">
-  
+
   <mat-form-field  class="example-full-width">
-    <mat-label>latitude</mat-label>
-    <input (keyup)="la($event)"  #nameInput type="text"  matInput placeholder="lat" value="ex:-2342.432">
+    <mat-label>endereco</mat-label>
+    <input (keyup)="pla($event)"  #nameInput type="text"  matInput placeholder="comienza" value="ex:-2342.432">
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <mat-label>length</mat-label>
-    <input (keyup)="le($event)" matInput placeholder="len." value="ex:1123.2232">
+
+  <mat-form-field >
+    <mat-label>Places</mat-label>
+      <mat-select  [(value)]="selection"  >
+        <li *ngFor="let autocomplete of Autocomplete">
+          <mat-option  [value]="autocomplete" >{{autocomplete}} </mat-option>
+        </li>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -219,21 +224,12 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field >
-    <mat-label>endereco</mat-label>
-      <mat-select  [(value)]="selection"  >
-        <li *ngFor="let autocomplete of Autocomplete">
-          <mat-option  value="autocomplete" >{{autocomplete}} </mat-option>
-        </li>
-      
-    </mat-select>
-  </mat-form-field>
 
   <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
-  <div *ngIf="condition">{{lat}}</div>
-  <div *ngIf="condition">{{len}}</div>
   <div *ngIf="condition">{{ratio}}</div>
   <div *ngIf="condition">{{service}}</div>
+  <div *ngIf="condition">{{selection}}</div>
+
 
   <div class="row">
     <div class="column">
