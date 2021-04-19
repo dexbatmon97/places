@@ -16,8 +16,8 @@ export class AppService {
 
   
 
-  getAddress(address:String) {
-    return this.http.get("http://localhost:3001/address/"+address);
+  getAddress(address:String,service:String,radious:String) {
+    return this.http.get("http://localhost:3001/address/"+address+"/service/"+service+"/radious/"+radious);
 
   }
 

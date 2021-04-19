@@ -11,8 +11,6 @@ import { FormControl, FormGroup} from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   
-    
-  
   coor: any;
   service: any;
   selection:any;
@@ -28,7 +26,6 @@ export class AppComponent implements OnInit {
   constructor(
     private appService: AppService,
     private http: HttpClient,
-
     ){
       
   }
@@ -44,11 +41,10 @@ export class AppComponent implements OnInit {
     this.address=event.target.value;
    }
   
-
   search(){
     this.condition=!this.condition
 
-     this.appService.getAddress(this.address)
+     this.appService.getAddress(this.address,this.service,this.ratio)
      .subscribe((data) => { 
       console.log(data);
       this.Package=data;
