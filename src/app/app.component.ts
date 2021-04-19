@@ -10,16 +10,18 @@ import { FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  
+    
+  
   coor: any;
   service: any;
   selection:any;
+  adress:any;
   ratio: any;
   condition=false;
   title = 'mysolution';
   Querys: any;
   i:any;
-  
   Package:any;
   Autocomplete:any;
 
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit {
     private http: HttpClient,
   
     ){
+      
   }
   
   ngOnInit(): void {
@@ -40,6 +43,8 @@ export class AppComponent implements OnInit {
   }
 
   pla(event : any) {
+    this.adress=event.target.value;
+    console.log(this.adress);
    }
   
 
@@ -48,22 +53,20 @@ export class AppComponent implements OnInit {
     
     console.log(this.service);
     console.log(this.appService.getPlaces());
-    //console.log(this.appService.getPlaces(this.ratio,this.len,this.lat,this.service));
-   // console.log(this.appService.getAll());
 
-   this.appService.postPlaces(this.coor,this.service,this.ratio);
+  // this.appService.postPlaces(this.coor,this.service,this.ratio);
+     this.appService.postPlaces("se");
+
     this.appService.getAutocomplete()
     .subscribe((data) => { 
      console.log(data);
          this.Autocomplete=data;
-        //aui se envia al coordenadas
+        //revibo direcciones
      });
 
      this.appService.getCoordinates()
     .subscribe((data) => { 
-     
-       
-      ///de aqui se envia al places 
+      ///recibo coordenadas
       //this.co
       //geometry.location.lat
       //geometry.location.lng
@@ -71,27 +74,10 @@ export class AppComponent implements OnInit {
      });
 
     this.appService.getPlaces()
-    // clone the data object, using its known Config shape
     .subscribe((data) => { 
-      
       this.Package=data;
-      console.log("retrieves");
+      console.log("lista recibida");
      });
-
-
-     
-
-    
-
-
   }
-
-
-
 }
-
-// export interface Config {
-//   name: string;
- 
-// }
 

@@ -22,8 +22,18 @@ export class AppService {
     return this.http.get("http://localhost:3001/coordinates");
   }
 
-  postPlaces(co:String,se:String,ra:String) {
-    return this.http.post("http://localhost:3001/placesinfo",{co,se,ra});
+ // postPlaces(co:String,se:String,ra:String) {
+  postPlaces(co:String) {
+
+    // this.http.post("http://localhost:3001/placesinfo","yy").toPromise().then((data:any) => {
+    //     console.log(data);
+    //   });
+
+    return this.http.post("http://localhost:3001/placesinfo","yy");
+    
+
+    //
+   // return this.http.post("http://localhost:3001/placesinfo",{co,se,ra});
   }
 
 
