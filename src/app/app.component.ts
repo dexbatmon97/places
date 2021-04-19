@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   coor: any;
   service: any;
   selection:any;
-  adress:any;
+  address:any;
   ratio: any;
   condition=false;
   title = 'mysolution';
@@ -28,56 +28,36 @@ export class AppComponent implements OnInit {
   constructor(
     private appService: AppService,
     private http: HttpClient,
-  
+
     ){
       
   }
   
   ngOnInit(): void {
-    console.log("holi");
   }
  
   ra(event : any) {
     this.ratio=event.target.value;
-    console.log(this.ratio);
   }
 
   pla(event : any) {
-    this.adress=event.target.value;
-    console.log(this.adress);
+    this.address=event.target.value;
    }
   
 
   search(){
     this.condition=!this.condition
-    
-    console.log(this.service);
-    console.log(this.appService.getPlaces());
 
-  // this.appService.postPlaces(this.coor,this.service,this.ratio);
-     this.appService.postPlaces("se");
-
-    this.appService.getAutocomplete()
-    .subscribe((data) => { 
-     console.log(data);
-         this.Autocomplete=data;
-        //revibo direcciones
-     });
-
-     this.appService.getCoordinates()
-    .subscribe((data) => { 
-      ///recibo coordenadas
-      //this.co
-      //geometry.location.lat
-      //geometry.location.lng
-     console.log(data);
-     });
-
-    this.appService.getPlaces()
-    .subscribe((data) => { 
+     this.appService.getAddress(this.address)
+     .subscribe((data) => { 
+      console.log(data);
       this.Package=data;
-      console.log("lista recibida");
-     });
+      });
+
+    // this.appService.getPlaces()
+    // .subscribe((data) => { 
+    //   this.Package=data;
+    //   console.log("lista recibida");
+    //  });
   }
 }
-

@@ -191,20 +191,14 @@
     <input (keyup)="pla($event)"  #nameInput type="text"  matInput placeholder="comienza" value="rua">
   </mat-form-field>
 
-  <div>
-    <label for="cc-number">Enter your credit card number</label>
-    <input name="cc-number" id="cc-number" autocomplete="on">
-  </div>
-
-
-  <mat-form-field >
+  <!-- <mat-form-field >
     <mat-label>Places</mat-label>
       <mat-select  [(value)]="selection"  >
         <li *ngFor="let autocomplete of Autocomplete">
           <mat-option  [value]="autocomplete" >{{autocomplete}} </mat-option>
         </li>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <mat-form-field class="example-full-width">
     <mat-label>radious until 50 000</mat-label>
@@ -226,15 +220,15 @@
       <mat-option value="pharmacy">pharmacy</mat-option>
       <mat-option value="gas_station">gas_station</mat-option>
       <mat-option value="hospital">hospital</mat-option>
+      <mat-option value="restaurant">restaurant</mat-option>
     </mat-select>
   </mat-form-field>
 
 
   <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
   <div *ngIf="condition">{{ratio}}</div>
-  <div *ngIf="condition">{{adress}}</div>
+  <div *ngIf="condition">{{address}}</div>
   <div *ngIf="condition">{{service}}</div>
-  <div *ngIf="condition">{{selection}}</div>
 
 
   <div class="row">
