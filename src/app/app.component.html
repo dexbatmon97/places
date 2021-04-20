@@ -191,15 +191,6 @@
     <input (keyup)="pla($event)"  #nameInput type="text"  matInput placeholder="comienza" value="rua das algas,991">
   </mat-form-field>
 
-  <!-- <mat-form-field >
-    <mat-label>Places</mat-label>
-      <mat-select  [(value)]="selection"  >
-        <li *ngFor="let autocomplete of Autocomplete">
-          <mat-option  [value]="autocomplete" >{{autocomplete}} </mat-option>
-        </li>
-    </mat-select>
-  </mat-form-field> -->
-
   <mat-form-field class="example-full-width">
     <mat-label>radious until 50 000</mat-label>
     <input (keyup)="ra($event)"  matInput placeholder="word" value="ex:10000">
@@ -208,6 +199,7 @@
   <mat-form-field >
     <mat-label>services</mat-label>
       <mat-select  [(value)]="service"  >
+      <mat-option value="all">all</mat-option>
       <mat-option value="airport">airport</mat-option>
       <mat-option value="bank">bank</mat-option>
       <mat-option value="convenience_store">convenience_store</mat-option>
@@ -224,7 +216,6 @@
     </mat-select>
   </mat-form-field>
 
-
   <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
   <div *ngIf="condition">{{ratio}}</div>
   <div *ngIf="condition">{{address}}</div>
@@ -233,18 +224,14 @@
 
   <div class="row">
     <div class="column">
-      
       <li  *ngFor="let package of Package">
-        
         <div> {{package.name}}  </div>
         <div class="menu">        
-        
         <span>{{package.international_phone_number}}  • </span>
         <span>{{package.formatted_address}}  • </span>
         <div>{{package.website}}  • </div>
         <div>{{package.url}}</div>
       </div>
-      
     </li>
     </div>
   </div>

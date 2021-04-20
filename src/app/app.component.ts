@@ -43,17 +43,10 @@ export class AppComponent implements OnInit {
   
   search(){
     this.condition=!this.condition
-
      this.appService.getAddress(this.address,this.service,this.ratio)
      .subscribe((data) => { 
       console.log(data);
       this.Package=data;
       });
-
-    // this.appService.getPlaces()
-    // .subscribe((data) => { 
-    //   this.Package=data;
-    //   console.log("lista recibida");
-    //  });
   }
 }
