@@ -1,8 +1,7 @@
-import { Component, getModuleFactory, OnInit } from '@angular/core';
-import { ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService} from './app.service';
 import { HttpClient } from '@angular/common/http';
-import { FormControl, FormGroup} from '@angular/forms';
+import 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -49,4 +48,10 @@ export class AppComponent implements OnInit {
       this.Package=data;
       });
   }
+
+  onScroll() {
+    console.log('scrolled!!');
+  }
+
+
 }
