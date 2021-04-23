@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-// import { FormsModule }   from '@angular/forms';
-import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AgmCoreModule } from '@agm/core';7
+
+
 
 @NgModule({
   declarations: [
@@ -18,8 +20,10 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    InfiniteScrollModule
-    // FormsModule
+    InfiniteScrollModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAQjATxQWfi_8s3D8mysIRLBpHBW8Q-pSE'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

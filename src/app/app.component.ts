@@ -10,17 +10,18 @@ import 'lodash';
 })
 export class AppComponent implements OnInit {
   
-  coor: any;
+  lat = 51.678418;
+  lng = 7.809007;
+
+ 
+
   service: any;
-  selection:any;
   address:any;
   ratio: any;
   condition=false;
   title = 'mysolution';
-  Querys: any;
-  i:any;
   Package:any;
-  Autocomplete:any;
+  inicio=false;
 
   constructor(
     private appService: AppService,
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    console.log(this.inicio)
   }
  
   ra(event : any) {
@@ -39,19 +41,32 @@ export class AppComponent implements OnInit {
   pla(event : any) {
     this.address=event.target.value;
    }
-  
+
+   
+ 
+
   search(){
+    
+    
     this.condition=!this.condition
      this.appService.getAddress(this.address,this.service,this.ratio)
      .subscribe((data) => { 
       console.log(data);
       this.Package=data;
+      if(this.Package!=undefined){
+        this.inicio=true;
+     }
+     console.log(this.inicio)
       });
+      
+     
+   
   }
 
-  onScroll() {
-    console.log('scrolled!!');
-  }
+  
+
+
+ 
 
 
 }

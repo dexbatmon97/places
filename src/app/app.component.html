@@ -54,25 +54,14 @@
 
   .content {
     display: flex;
-    margin: 82px auto 32px;
+    margin: 60px auto 32px;
     padding: 0 16px;
     max-width: 960px;
     flex-direction: column;
     align-items: center;
   }
 
-  svg.material-icons {
-    height: 24px;
-    width: auto;
-  }
-
-  svg.material-icons:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  .card svg.material-icons path {
-    fill: #888;
-  }
+ 
 
   .card-container {
     display: flex;
@@ -99,38 +88,6 @@
 
   .card-container .card:not(:last-child) {
     margin-right: 0;
-  }
-
-  .card.card-small {
-    height: 16px;
-    width: 168px;
-  }
-
-  .card-container .card:not(.highlight-card) {
-    cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-  }
-
-  .card-container .card:not(.highlight-card):hover .material-icons path {
-    fill: rgb(105, 103, 103);
-  }
-
-  .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-    border: none;
-    width: auto;
-    min-width: 30%;
-    position: relative;
-  }
-
-  .card.card.highlight-card span {
-    margin-left: 60px;
   }
 
  
@@ -172,8 +129,14 @@
 
 .search-results {
         height: 20rem;
+        width: 100%;
         overflow: scroll;
       }
+
+.agm-map{
+  height: 200px;
+}
+
 
 </style>
 
@@ -193,7 +156,7 @@
 
   <mat-form-field  class="example-full-width">
     <mat-label>endereco</mat-label>
-    <input (keyup)="pla($event)"  #nameInput type="text"  matInput placeholder="comienza" value="rua das algas,991">
+    <input (keyup)="pla($event)"  #nameInput type="text"  matInput placeholder="comienza" value="ex:rua das algas,991">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -222,37 +185,46 @@
   </mat-form-field>
 
   <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
-  <div *ngIf="condition">{{ratio}}</div>
-  <div *ngIf="condition">{{address}}</div>
-  <div *ngIf="condition">{{service}}</div>
-    
-  <div class="row">
-    <div class="column">
-      <div
-      class="search-results"
-      infiniteScroll
-      [infiniteScrollDistance]="2"
-      [infiniteScrollThrottle]="50"
-      (scrolled)="onScroll()"
-    >
-          <li  *ngFor="let package of Package">
-            <div> {{package.name}}  </div>
-            <div class="menu">   
-          
-            <span>{{package.international_phone_number}}  • </span>
-            <span>{{package.formatted_address}}  • </span>
-            <div>{{package.website}}  • </div>
-            <div>{{package.url}}
 
-          </div>   
-          </div>
-        </li>
+  <div *ngIf="condition">Buscando {{service}}s dentro de {{ratio}} m de {{address}}</div>
+  <div *ngIf="inicio"> listo!</div>
+
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+
+  <div *ngIf="inicio">
+    <div class="row">
+      <div class="column">
+        <div
+        class="search-results"
+        infiniteScroll
+        [infiniteScrollDistance]="5"
+        [infiniteScrollThrottle]="50"
+       
+      >
+            <li  *ngFor="let package of Package">
+  
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title>{{package.name}} </mat-card-title>
+                  <mat-card-subtitle>{{package.international_phone_number}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    {{package.formatted_address}}  • {{package.website}}  •  {{package.url}}
+                  </p>
+                </mat-card-content>
+              </mat-card>
+          </li>
+        </div>
       </div>
     </div>
-  </div>
- 
+  </div> 
   
-
+ 
+ 
 </div>
 
 <router-outlet></router-outlet>
