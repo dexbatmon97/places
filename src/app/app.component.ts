@@ -10,17 +10,16 @@ import 'lodash';
 })
 export class AppComponent implements OnInit {
   
-  lat = 51.678418;
-  lng = 7.809007;
-
- 
+  lat = -27.598591;
+  lng = -48.519387;
+  zoom=13;
 
   service: any;
   address:any;
   ratio: any;
   condition=false;
   title = 'mysolution';
-  Package:any;
+  packages:any;
   inicio=false;
 
   constructor(
@@ -42,21 +41,18 @@ export class AppComponent implements OnInit {
     this.address=event.target.value;
    }
 
-   
- 
-
   search(){
-    
     
     this.condition=!this.condition
      this.appService.getAddress(this.address,this.service,this.ratio)
      .subscribe((data) => { 
       console.log(data);
-      this.Package=data;
-      if(this.Package!=undefined){
+      this.packages=data;
+      if(this.packages!=undefined){
         this.inicio=true;
      }
      console.log(this.inicio)
+     
       });
       
      
