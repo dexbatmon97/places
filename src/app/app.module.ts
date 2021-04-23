@@ -22,7 +22,7 @@ import { AgmCoreModule } from '@agm/core';7
     HttpClientModule,
     InfiniteScrollModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAQjATxQWfi_8s3D8mysIRLBpHBW8Q-pSE'
+      apiKey: ''
     })
   ],
   providers: [],

@@ -6,6 +6,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule(
 {
@@ -16,6 +17,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatBadgeModule,
     MatInputModule,
     MatSelectModule,
+    ScrollingModule
   ],
   exports:[
     MatToolbarModule,
@@ -24,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatBadgeModule,
     MatInputModule,
     MatSelectModule,
+    ScrollingModule
   ]
 
 }
