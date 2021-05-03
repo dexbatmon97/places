@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { AgmCoreModule } from '@agm/core';7
-
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -28,5 +26,5 @@ import { AgmCoreModule } from '@agm/core';7
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule {}

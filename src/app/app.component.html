@@ -128,7 +128,7 @@
 .menu > span {display:inline-block} 
 
 .search-results {
-        height: 20rem;
+        height: 10rem;
         width: 100%;
         overflow: scroll;
       }
@@ -180,10 +180,10 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>radious until 50 000</mat-label>
-    <input (keyup)="ra($event)"  matInput placeholder="word" value="ex:10000">
+    <input (keyup)="ra($event)"  matInput placeholder="word" value="ex:1000">
   </mat-form-field>
 
-  <mat-form-field >
+  <!-- <mat-form-field >
     <mat-label>services</mat-label>
       <mat-select  [(value)]="service"  >
       <mat-option value="all">all</mat-option>
@@ -201,36 +201,65 @@
       <mat-option value="hospital">hospital</mat-option>
       <mat-option value="restaurant">restaurant</mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
 
-  <div *ngIf="condition">Buscando {{service}}s dentro de {{ratio}} m de {{address}}</div>
-  <div *ngIf="inicio"> listo!</div>
+  <div *ngIf="condition">Buscando {{service}} dentro de {{ratio}} m de {{address}}</div>
+ 
+  <mat-spinner *ngIf="loading" >
+  </mat-spinner>
 
 
   <div *ngIf="inicio">
     <div class="row">
       <div class="column">
-        <cdk-virtual-scroll-viewport class="example-viewport" itemSize="60">
+        <cdk-virtual-scroll-viewport class="example-viewport" itemSize="5">
           <dl class="example-dl">
             <ng-container *cdkVirtualFor="let package of packages">
-              <dt class="example-dt">{{package.info.name}}</dt>
-              <dd class="example-dd" *ngIf="!(package.info.international_phone_number === undefined)" >{{package.info.international_phone_number}}</dd>
-              <dd class="example-dd" *ngIf="!(package.info.formatted_address === undefined)">{{package.info.formatted_address}}</dd>
-              <dd class="example-dd" *ngIf="!(package.info.website === undefined)">{{package.info.website}}</dd>
-              <dd class="example-dd" *ngIf="!(package.info.url === undefined)"  style="padding-bottom :5px;">{{package.info.url}}</dd>
+              <dt class="example-dt">{{package.name}}</dt>
+              <dd class="example-dd" *ngIf="!(package.international_phone_number === undefined)" >{{package.international_phone_number}}</dd>
+              <dd class="example-dd" *ngIf="!(package.formatted_address === undefined)">{{package.formatted_address}}</dd>
+              <dd class="example-dd" *ngIf="!(package.website === undefined)">{{package.website}}</dd>
+              <dd class="example-dd" *ngIf="!(package.url === undefined)"  style="padding-bottom :5px;">{{package.url}}</dd>
             </ng-container>
           </dl>
         </cdk-virtual-scroll-viewport>
       </div>
     </div>
-    <agm-map [latitude]="packages[0].marker.lat" [longitude]="packages[0].marker.lng" [zoom]="zoom">
+
+         
+    
+
+          <!-- <div
+        infinite-scroll
+        [infiniteScrollDistance]="1"
+        [infiniteScrollThrottle]="5"
+        class="search-results"
+      >
+        <mat-card *ngFor="let package of packages">
+          <mat-card-title>
+            <h1>
+              <a>{{ package.name }}</a>
+            </h1>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <h2>{{ package.name }}</h2>
+          </mat-card-subtitle>
+          <mat-card-content>
+            <h3>Type: {{ package.name }}</h3>
+          </mat-card-content>
+        </mat-card>
+      </div> -->
+
+
+
+    <agm-map [latitude]="packages[0].geometry.location.lat" [longitude]="packages[0].geometry.location.lng" [zoom]="zoom">
       <agm-marker
       *ngFor="let package of packages"
-      [latitude]="package.marker.lat" [longitude]="package.marker.lng" >
+      [latitude]="package.geometry.location.lat" [longitude]="package.geometry.location.lng" >
         <agm-info-window>
-          <strong>{{package.info.name}}</strong>
+          <strong>{{package.name}}</strong>
         </agm-info-window>
       </agm-marker>
     </agm-map>

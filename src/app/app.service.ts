@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppService {
   constructor(private http: HttpClient) { }
-  getAddress(address:String,service:String,radious:String) {
-    return this.http.get("http://localhost:3001/address/"+address+"/service/"+service+"/radious/"+radious);
+  getAddress(address:String,radious:String) {
+    return this.http.get("http://localhost:3001/address/"+address+"/radious/"+radious);
   }
 }
 

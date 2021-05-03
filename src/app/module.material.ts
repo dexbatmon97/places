@@ -7,6 +7,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule(
 {
@@ -17,7 +18,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatBadgeModule,
     MatInputModule,
     MatSelectModule,
-    ScrollingModule
+    ScrollingModule,
+    MatProgressSpinnerModule
   ],
   exports:[
     MatToolbarModule,
@@ -26,7 +28,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatBadgeModule,
     MatInputModule,
     MatSelectModule,
-    ScrollingModule
+    ScrollingModule,
+    MatProgressSpinnerModule
   ]
 
 }
