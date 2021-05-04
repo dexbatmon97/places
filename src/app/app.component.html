@@ -175,7 +175,7 @@
 
   <mat-form-field  class="example-full-width">
     <mat-label>endereco</mat-label>
-    <input (keyup)="pla($event)"  #nameInput type="text"  matInput placeholder="comienza" value="ex:rua das algas,991">
+    <input (keyup)="pla($event)" id="txtvalue" #nameInput type="text"  matInput placeholder="comienza" value="ex:rua das algas,991">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -203,7 +203,7 @@
     </mat-select>
   </mat-form-field> -->
 
-  <button mat-raised-button color="primary"  (click)="search()"  >Procurar</button>
+  <button mat-raised-button color="primary"  (click)="add()"  (click)="search()"  >Procurar</button>
 
   <div *ngIf="condition">Buscando {{service}} dentro de {{ratio}} m de {{address}}</div>
  
@@ -222,6 +222,7 @@
               <dd class="example-dd" *ngIf="!(package.formatted_address === undefined)">{{package.formatted_address}}</dd>
               <dd class="example-dd" *ngIf="!(package.website === undefined)">{{package.website}}</dd>
               <dd class="example-dd" *ngIf="!(package.url === undefined)"  style="padding-bottom :5px;">{{package.url}}</dd>
+              <button mat-raised-button color="primary"  (click)="add()"  >add</button>
             </ng-container>
           </dl>
         </cdk-virtual-scroll-viewport>
@@ -266,7 +267,7 @@
   </div> 
 
  
- 
+
 </div>
 
 <router-outlet></router-outlet>
