@@ -205,7 +205,28 @@
   </mat-form-field> -->
 
   <button mat-raised-button color="primary"   (click)="search()"  >Procurar</button> 
-  <button mat-raised-button color="primary"   (click)="goToPage('tablebase')"   >go to data base</button>
+  <button mat-raised-button color="primary"   (click)="goToPage('Tablebase')"   >go to data base</button>
+
+
+
+
+
+  <mat-form-field class="example-full-width">
+    <mat-label>buscar</mat-label>
+    <input id="datavalue"  matInput placeholder="word" value="look for">
+  </mat-form-field>
+  <button mat-raised-button color="primary" 
+                 (click)="get()"
+   >get</button>
+
+  <label> data is {{getvalue.address}}</label>
+
+
+
+
+
+
+
 
   <div *ngIf="condition">Buscando {{service}} dentro de {{ratio}} m de {{address}}</div>
  
@@ -230,6 +251,10 @@
               <button mat-raised-button color="primary" 
                  (click)="delete(package.name)"
                  >delete</button>
+              <button mat-raised-button color="primary" 
+                 (click)="add(package.name,package.international_phone_number,package.formatted_address,package.website)"
+              >update</button>
+              
             </ng-container>
           </dl>
         </cdk-virtual-scroll-viewport>
@@ -237,8 +262,6 @@
     </div>
 
          
-    
-
           <!-- <div
         infinite-scroll
         [infiniteScrollDistance]="1"
@@ -259,8 +282,6 @@
           </mat-card-content>
         </mat-card>
       </div> -->
-
-
 
     <agm-map [latitude]="packages[0].geometry.location.lat" [longitude]="packages[0].geometry.location.lng" [zoom]="zoom">
       <agm-marker

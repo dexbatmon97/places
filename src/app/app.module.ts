@@ -7,10 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AgmCoreModule } from '@agm/core';
+import { TablebaseComponent } from './tablebase/tablebase.component';
 
 @NgModule({
   declarations: [
-    AppComponent,  
+    AppComponent,
+    TablebaseComponent,  
   ],
   imports: [
     BrowserModule,

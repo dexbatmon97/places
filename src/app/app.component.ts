@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.inicio);
     this.condition = false;
+    this.getvalue = ''
   }
 
   ra(event: any) {
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit {
   }
 
   goToPage(pageName:String){
-    this.router.navigate(['${pageName}']);
+    this.router.navigate([`${pageName}`]);
 
   }
 
@@ -67,10 +68,13 @@ export class AppComponent implements OnInit {
     });
   }
 
-  get(name: any) {
+  get() {
+    let name = (<HTMLInputElement>document.getElementById("datavalue")).value
+    console.log(name)
     this.localStorage.get(name).then((res) => {
       if (res) {
         this.getvalue = res;
+        console.log(this.getvalue)
       }
     });
   }
