@@ -175,7 +175,8 @@
 
   <mat-form-field  class="example-full-width">
     <mat-label>endereco</mat-label>
-    <input (keyup)="pla($event)" id="txtvalue" #nameInput type="text"  matInput placeholder="comienza" value="ex:rua das algas,991">
+    <!-- <input (keyup)="pla($event)" id="txtvalue" #nameInput type="text"  matInput placeholder="comienza" value="ex:rua das algas,991"> -->
+    <input (keyup)="pla($event)"  #nameInput type="text"  matInput placeholder="comienza" value="ex:rua das algas,991">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -203,7 +204,8 @@
     </mat-select>
   </mat-form-field> -->
 
-  <button mat-raised-button color="primary"  (click)="add()"  (click)="search()"  >Procurar</button>
+  <button mat-raised-button color="primary"   (click)="search()"  >Procurar</button> 
+  <button mat-raised-button color="primary"   (click)="goToPage('tablebase')"   >go to data base</button>
 
   <div *ngIf="condition">Buscando {{service}} dentro de {{ratio}} m de {{address}}</div>
  
@@ -217,12 +219,17 @@
         <cdk-virtual-scroll-viewport class="example-viewport" itemSize="5">
           <dl class="example-dl">
             <ng-container *cdkVirtualFor="let package of packages">
-              <dt class="example-dt">{{package.name}}</dt>
+              <dt  class="example-dt">{{package.name}}</dt>
               <dd class="example-dd" *ngIf="!(package.international_phone_number === undefined)" >{{package.international_phone_number}}</dd>
               <dd class="example-dd" *ngIf="!(package.formatted_address === undefined)">{{package.formatted_address}}</dd>
               <dd class="example-dd" *ngIf="!(package.website === undefined)">{{package.website}}</dd>
               <dd class="example-dd" *ngIf="!(package.url === undefined)"  style="padding-bottom :5px;">{{package.url}}</dd>
-              <button mat-raised-button color="primary"  (click)="add()"  >add</button>
+              <button mat-raised-button color="primary" 
+               (click)="add(package.name,package.international_phone_number,package.formatted_address,package.website)"
+                 >add</button>
+              <button mat-raised-button color="primary" 
+                 (click)="delete(package.name)"
+                 >delete</button>
             </ng-container>
           </dl>
         </cdk-virtual-scroll-viewport>

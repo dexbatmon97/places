@@ -42,7 +42,7 @@ export class LocalStorageService {
         request.onsuccess = await function (event: { target: { result: any; }; }) {
           if (event.target.result) {
             console.log('success');
-            resolve('success');
+            resolve(event.target.result);
           } else {
             console.log('error');
             resolve(false);
