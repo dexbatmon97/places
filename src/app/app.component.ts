@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   add(name: any, phone: any, address: any, website: any) {
-    this.localStorage.add(name, { address: address,phone:phone, website:website }).then((res) => {
+    this.localStorage.add(name, { name:name, address: address,phone:phone, website:website }).then((res) => {
       if (res) {
         alert('inserted succesfully');
       }
@@ -68,16 +68,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  get() {
-    let name = (<HTMLInputElement>document.getElementById("datavalue")).value
-    console.log(name)
-    this.localStorage.get(name).then((res) => {
-      if (res) {
-        this.getvalue = res;
-        console.log(this.getvalue)
-      }
-    });
-  }
+
 
   search() {
     this.inicio == false;

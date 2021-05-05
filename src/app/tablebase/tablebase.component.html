@@ -1,11 +1,15 @@
+<div>
+  <mat-form-field class="example-full-width">
+    <mat-label>buscar</mat-label>
+    <input id="datavalue" matInput placeholder="word" value="look for" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="get()">get</button>
+</div>
+<div *ngIf="condition">
+  <div> name: {{ getvalue.name }}</div>
+  <div> address {{ getvalue.address }}</div>
+  <div> phone {{ getvalue.phone }}</div>
+  <div> website {{ getvalue.website }}</div>
+</div> 
 
-
-<p>
-    
-    database
-
-   
-
-
-
-</p>
+<button mat-raised-button color="primary"  (click)="goToPage('')" >back</button>

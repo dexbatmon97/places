@@ -168,8 +168,16 @@
   />
   <span>Places</span>
     <div class="spacer"></div>
+
+    <span>
+      <button mat-raised-button color="primary"   (click)="goToPage('Tablebase')"   >go to data base</button>
+      <button mat-raised-button color="primary"   (click)="goToPage('Places')"   >go to places</button>
+    
+    </span>
    
 </div>
+
+
 
 <div class="content" role="main">
 
@@ -205,27 +213,7 @@
   </mat-form-field> -->
 
   <button mat-raised-button color="primary"   (click)="search()"  >Procurar</button> 
-  <button mat-raised-button color="primary"   (click)="goToPage('Tablebase')"   >go to data base</button>
-
-
-
-
-
-  <mat-form-field class="example-full-width">
-    <mat-label>buscar</mat-label>
-    <input id="datavalue"  matInput placeholder="word" value="look for">
-  </mat-form-field>
-  <button mat-raised-button color="primary" 
-                 (click)="get()"
-   >get</button>
-
-  <label> data is {{getvalue.address}}</label>
-
-
-
-
-
-
+  
 
 
   <div *ngIf="condition">Buscando {{service}} dentro de {{ratio}} m de {{address}}</div>

@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AgmCoreModule } from '@agm/core';
 import { TablebaseComponent } from './tablebase/tablebase.component';
+import { PlacesComponent } from './places/places.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TablebaseComponent,  
+    TablebaseComponent,
+    PlacesComponent,  
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { TablebaseComponent } from './tablebase/tablebase.component';
     HttpClientModule,
     InfiniteScrollModule,
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyAQjATxQWfi_8s3D8mysIRLBpHBW8Q-pSE'
     })
   ],
   providers: [],
