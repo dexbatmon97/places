@@ -194,8 +194,29 @@
   <div> website {{ getvalue.website }}</div>
 </div> 
 <div>
-  <button mat-raised-button color="primary"  *ngIf="condition"  >update</button>
+  <button mat-raised-button color="primary"  (click)="menuUpdate()" *ngIf="condition"  >update</button>
   <button mat-raised-button color="primary"  (click)="goToPage('')" >back</button>
+</div>
+<div *ngIf="menu" >
+
+    <mat-form-field >
+    <mat-label>services</mat-label>
+      <mat-select  [(value)]="service"  >
+      <mat-option value="name">name</mat-option>
+      <mat-option value="address">address</mat-option>
+      <mat-option value="phone">phone</mat-option>
+      <mat-option value="website">website</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>{{service}}</div> 
+
+  <mat-form-field class="example-full-width">
+    <mat-label>new value</mat-label>
+    <input (keyup)="change($event)"  matInput placeholder="new value" value="-">
+  </mat-form-field>
+  
+  <button mat-raised-button color="primary"  (click)="update(service,getvalue.name,getvalue.address,getvalue.phone,getvalue.website)"  >save</button>
+  
 </div>
 
 

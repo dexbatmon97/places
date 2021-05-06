@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
   add(name: any, phone: any, address: any, website: any) {
     this.localStorage.add(name, { name:name, address: address,phone:phone, website:website }).then((res) => {
       if (res) {
-        alert('inserted succesfully');
+        //alert('inserted succesfully');
       }
     });
   }

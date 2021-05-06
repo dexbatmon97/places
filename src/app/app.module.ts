@@ -24,7 +24,7 @@ import { PlacesComponent } from './places/places.component';
     HttpClientModule,
     InfiniteScrollModule,
     AgmCoreModule.forRoot({
-      apiKey: 'i'
+      apiKey: ''
     })
   ],
   providers: [],
