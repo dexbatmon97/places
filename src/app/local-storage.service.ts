@@ -52,6 +52,28 @@ export class LocalStorageService {
     });
   }
 
+    //get the data from index db
+    getAll() {
+      return new Promise( async (resolve, reject) => {
+        if (db != undefined) {
+          const request = await db
+            .transaction([this.storagename], 'readwrite')
+            .objectStore(this.storagename)
+            .getAll();
+  
+          request.onsuccess = await function (event: { target: { result: any; }; }) {
+            if (event.target.result) {
+              console.log('success');
+              resolve(event.target.result);
+            } else {
+              console.log('error');
+              resolve(false);
+            }
+          };
+        }
+      });
+    }
+
   delete(keyname: any) {
     return new Promise( async (resolve, reject) => {
       if (db != undefined) {

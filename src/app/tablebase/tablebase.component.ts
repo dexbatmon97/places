@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class TablebaseComponent implements OnInit {
   public getvalue: any;
+  public getall: any;
   condition = false;
 
   constructor(
@@ -18,6 +19,16 @@ export class TablebaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getvalue = '';
+
+    this.localStorage.getAll().then((res) => {
+      if (res) {
+        this.getall = res;
+        console.log(this.getall);
+       
+      }
+    });
+
+
   }
 
   goToPage(pageName: String) {

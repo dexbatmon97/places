@@ -48,6 +48,7 @@ export class AppComponent implements OnInit {
 
   goToPage(pageName:String){
     this.router.navigate([`${pageName}`]);
+    this.inicio = false;
 
   }
 

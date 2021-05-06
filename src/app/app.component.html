@@ -171,7 +171,7 @@
 
     <span>
       <button mat-raised-button color="primary"   (click)="goToPage('Tablebase')"   >go to data base</button>
-      <button mat-raised-button color="primary"   (click)="goToPage('Places')"   >go to places</button>
+      <!-- <button mat-raised-button color="primary"   (click)="goToPage('Places')"   >go to places</button> -->
     
     </span>
    
@@ -192,25 +192,6 @@
     <input (keyup)="ra($event)"  matInput placeholder="word" value="ex:1000">
   </mat-form-field>
 
-  <!-- <mat-form-field >
-    <mat-label>services</mat-label>
-      <mat-select  [(value)]="service"  >
-      <mat-option value="all">all</mat-option>
-      <mat-option value="airport">airport</mat-option>
-      <mat-option value="bank">bank</mat-option>
-      <mat-option value="convenience_store">convenience_store</mat-option>
-      <mat-option value="electrician">electrician</mat-option>
-      <mat-option value="museum">museum</mat-option>
-      <mat-option value="police">police</mat-option>
-      <mat-option value="fire_station">fire_station</mat-option>
-      <mat-option value="plumber">plumber</mat-option>
-      <mat-option value="school">school</mat-option>
-      <mat-option value="pharmacy">pharmacy</mat-option>
-      <mat-option value="gas_station">gas_station</mat-option>
-      <mat-option value="hospital">hospital</mat-option>
-      <mat-option value="restaurant">restaurant</mat-option>
-    </mat-select>
-  </mat-form-field> -->
 
   <button mat-raised-button color="primary"   (click)="search()"  >Procurar</button> 
   
@@ -249,28 +230,6 @@
       </div>
     </div>
 
-         
-          <!-- <div
-        infinite-scroll
-        [infiniteScrollDistance]="1"
-        [infiniteScrollThrottle]="5"
-        class="search-results"
-      >
-        <mat-card *ngFor="let package of packages">
-          <mat-card-title>
-            <h1>
-              <a>{{ package.name }}</a>
-            </h1>
-          </mat-card-title>
-          <mat-card-subtitle>
-            <h2>{{ package.name }}</h2>
-          </mat-card-subtitle>
-          <mat-card-content>
-            <h3>Type: {{ package.name }}</h3>
-          </mat-card-content>
-        </mat-card>
-      </div> -->
-
     <agm-map [latitude]="packages[0].geometry.location.lat" [longitude]="packages[0].geometry.location.lng" [zoom]="zoom">
       <agm-marker
       *ngFor="let package of packages"
@@ -281,8 +240,6 @@
       </agm-marker>
     </agm-map>
   </div> 
-
- 
 
 </div>
 
