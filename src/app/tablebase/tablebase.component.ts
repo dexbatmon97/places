@@ -47,6 +47,8 @@ export class TablebaseComponent implements OnInit {
 
   update(parameter: any, name: any, phone: any, address: any, website: any) {
       const id =name;
+      console.log(this.newValue)
+      console.log(1,name,phone,website,address)
     switch (parameter) {
       case 'phone':
         phone = this.newValue;
@@ -78,8 +80,11 @@ export class TablebaseComponent implements OnInit {
 
       this.menu=false;
       this.condition=false;
+      
+      console.log(2,name,phone,website,address)
 
-      if(parameter="name"){
+
+      if(parameter=='name'){
         this.localStorage.delete(id).then((res) => {
           if (res) {
            
