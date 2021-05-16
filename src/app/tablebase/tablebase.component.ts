@@ -14,6 +14,12 @@ export class TablebaseComponent implements OnInit {
   service: any;
   condition = false;
   menu = false;
+  phones = [];
+  websites = [];
+  addresses = [];
+  found = false;
+  index: any;
+  names = [];
 
   constructor(
     private localStorage: LocalStorageService,
@@ -22,11 +28,10 @@ export class TablebaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getvalue = '';
-
     this.localStorage.getAll().then((res) => {
       if (res) {
         this.getall = res;
-        console.log(this.getall);
+        //console.log(this.getall);
       }
     });
   }
@@ -39,16 +44,12 @@ export class TablebaseComponent implements OnInit {
     this.menu = true;
   }
 
- 
-
   change(event: any) {
     this.newValue = event.target.value;
   }
 
   update(parameter: any, name: any, phone: any, address: any, website: any) {
-      const id =name;
-      console.log(this.newValue)
-      console.log(1,name,phone,website,address)
+    const id = name;
     switch (parameter) {
       case 'phone':
         phone = this.newValue;
@@ -78,29 +79,72 @@ export class TablebaseComponent implements OnInit {
         }
       });
 
-      this.menu=false;
-      this.condition=false;
-      
-      console.log(2,name,phone,website,address)
+    this.menu = false;
+    this.condition = false;
 
+    if (parameter == 'name') {
+      this.localStorage.delete(id).then((res) => {
+        if (res) {
+          this.getvalue = 'deleted succesfully';
+        }
+      });
 
-      if(parameter=='name'){
-        this.localStorage.delete(id).then((res) => {
-          if (res) {
-           
-            this.getvalue = 'deleted succesfully';
-          }
-        });
-      }
+      this.localStorage.getAll().then((res) => {
+        if (res) {
+          this.getall = res;
+        }
+      });
+    }
   }
 
-  get() {
+  get(parameter: any) {
+    for (const i in this.getall) {
+      // console.log(`${i}: ${this.getall[i].phone}`);
+      this.phones[i] = this.getall[i].phone;
+      this.websites[i] = this.getall[i].website;
+      this.addresses[i] = this.getall[i].address;
+      this.names[i] = this.getall[i].name;
+    }
+
     let name = (<HTMLInputElement>document.getElementById('datavalue')).value;
-    console.log(name);
+
+    console.log(this.addresses);
+    switch (parameter) {
+      case 'phone':
+        console.log('entro');
+        for (const j in this.getall) {
+          if (name == this.phones[j]) {
+            this.found = true;
+            this.index = j;
+          }
+        }
+        break;
+      case 'website':
+        for (const k in this.getall) {
+          if (name == this.websites[k]) {
+            this.found = true;
+            this.index = k;
+          }
+        }
+        break;
+      case 'address':
+        for (const r in this.getall) {
+          if (name == this.addresses[r] || this.addresses[r].includes(name)) {
+            this.found = true;
+            this.index = r;
+          }
+        }
+        break;
+    }
+
+    if (this.found == true) {
+      name = this.getall[this.index].name;
+      this.found = false;
+    }
+
     this.localStorage.get(name).then((res) => {
       if (res) {
         this.getvalue = res;
-        console.log(this.getvalue);
         this.condition = true;
       }
     });

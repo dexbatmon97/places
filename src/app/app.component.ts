@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
     console.log(this.inicio);
     this.condition = false;
     this.getvalue = ''
+
+    this.localStorage.iniciarIndexedDb();
   }
 
   ra(event: any) {

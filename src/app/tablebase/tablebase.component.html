@@ -181,12 +181,34 @@
   </cdk-virtual-scroll-viewport>
 
 
-  <mat-form-field class="example-full-width">
-    <mat-label>buscar</mat-label>
+  <!-- <mat-form-field class="example-full-width">
+    <mat-label>name od data</mat-label>
     <input id="datavalue" matInput placeholder="word" value="look for" />
   </mat-form-field>
-  <button mat-raised-button color="primary" style= "margin-left:33px ;"(click)="get()">get</button>
+  <button mat-raised-button color="primary" style= "margin-left:33px ;"(click)="get()">get</button> -->
+
+
+  <div>
+    <mat-form-field >
+      <mat-label>parameter to search</mat-label>
+        <mat-select  [(value)]="looking"  >
+        <mat-option value="name">name</mat-option>
+        <mat-option value="address">address</mat-option>
+        <mat-option value="phone">phone</mat-option>
+        <mat-option value="website">website</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>name of data</mat-label>
+      <input id="datavalue" matInput placeholder="word" value="look for" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" style= "margin-left:33px ;"(click)="get(looking)">get</button>
+  </div>
+  
 </div>
+
 <div *ngIf="condition">
   <div> name: {{ getvalue.name }}</div>
   <div> address {{ getvalue.address }}</div>
